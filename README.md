@@ -16,4 +16,13 @@ approval status so we can overcome the need to depend on a single machine
 learning model instead we can combine multiple models so to obtain a stacked 
 model which provides better predictions as compared to each individual model
 
-# Bank-Loan-Prediction
+# What is STACKING?
+
+Stacking is an ensemble machine learning algorithm. It uses a meta-learning 
+algorithm to learn how best combine the predictions from two or more base 
+machine learning algorithms. The benefit of stacking is that it harnesses the 
+capabilities of a range of well performing models on a classification or 
+regression task and make predictions that have better performance than any 
+single model in the ensemble. 
+Hence by using stacking we will be able to create a new classifier that 
+hopefully will give better accuracy compared to all other base models. 
