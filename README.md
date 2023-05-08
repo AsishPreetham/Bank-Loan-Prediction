@@ -15,3 +15,5 @@ enhancement of those algorithms using stacking to predict the bank loan
 approval status so we can overcome the need to depend on a single machine 
 learning model instead we can combine multiple models so to obtain a stacked 
 model which provides better predictions as compared to each individual model
+
+# Bank-Loan-Prediction
