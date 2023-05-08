@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html >
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@600&family=Monda&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@600&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   <title>Bank Loan Approval</title>
+   <script>
+   function Reset(){
+           document.getElementById("ai").value="";
+           document.getElementById("ci").value="";
+           document.getElementById("Term").value="";
+           document.getElementById("la").value="";
+           document.getElementById("Credit").value="";
+           document.getElementById("Gender").value="";
+           document.getElementById("Marital").value="";
+           document.getElementById("Dept").value="";
+           document.getElementById("Edu").value="";
+           document.getElementById("Emp").value="";
+           document.getElementById("PA").value="";
+   }
+   </script>
+   
+</head>
+
+<body>
+ <div class="login">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>Predict Loan Approval</h1><br/><br/>
+
+   
+   <div class="sam">
+    <form action="{{ url_for('predict')}}" method="post" class="fom">
+     <table >
+     <tr>
+     <td></td>
+     
+     </tr>
+     <tr>
+     <td></td>
+     
+     </tr>
+         <tr>
+             <td><label>Applicant_Income</label></td>
+             <td class="colon"><label>:</label>&nbsp;&nbsp;</td>
+             <td><input id="ai" type="text"  value="{{ai}}" name="Applicant_Income"  required="required" /></td>
+         </tr>
+         <tr>
+             <td><label>CoApplicant_Income</label></td>
+              <td class="colon"><label>:</label></td>
+             <td><input id="ci" type="text" value="{{ci}}" name="CoApplicant_Income"  required="required" /></td>
+         </tr>
+         <tr>
+             <td><label>Loan_Amount_Term</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><input id="Term" type="text" value="{{lt}}" name="Term"  required="required" /></td>
+         </tr>
+         <tr>
+             <td><label>Loan_Amount</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><input id="la" type="text" value="{{la}}" name="Loan_Amount"  required="required" /></td>
+         </tr>
+         <tr>
+             <td><label>Credit_History</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Credit" name="Credit"  required="required" >
+             {% if ch == 1 %}
+                   <option value="1" selected >Have Credit History</option>
+                  <option value="0">Doesn't have Credit History</option>
+            {% else %}
+            <option value="1">Have Credit History</option>
+                  <option value="0" selected>Doesn't have Credit History</option>
+            {% endif %}
+                     
+                    </select>
+              </td>
+         </tr>
+         <tr>
+             <td><label>Gender</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Gender" name="Gender"  required="required" >
+             {% if gd == 1 %}
+            <option value="1" selected>Male</option>
+          <option value="0">Female</option>
+            {% else %}
+        <option value="1">Male</option>
+          <option value="0" selected>Female</option>
+            {% endif %}
+        </select></td>
+         </tr>
+         <tr>
+             <td><label>Marital Status</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Marital" name="Marital"  required="required" >
+             {% if mr == 1 %}
+          <option value="1" selected>Married</option>
+          <option value="0">Not Married</option>
+            {% else %}
+          <option value="1">Married</option>
+          <option value="0" selected>Not Married</option>
+            {% endif %}
+
+        </select></td>
+         </tr>
+         <tr>
+             <td><label>Dependents</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Dept" name="Dept"  required="required" >
+             {% if dp == 0 %}
+          <option value="0" selected>0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">3+</option>
+            	{% elif dp == 1 %}
+	       <option value="0" >0</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="4">3+</option>
+			{% elif dp == 2 %}
+           <option value="0" >0</option>
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="4">3+</option>
+			{% else %}
+          <option value="0" >0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4" selected>3+</option>
+            {% endif %}
+
+        </select></td>
+         </tr>
+         <tr>
+             <td><label>Education</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Edu" name="Edu"  required="required" >
+             {% if ed == 0 %}
+        <option value="0" selected>Graduate</option>
+          <option value="1">Under Graduate</option>
+            {% else %}
+        <option value="0">Graduate</option>
+          <option value="1" selected>Under Graduate</option>
+            {% endif %}
+
+        </select></td>
+         </tr>
+         <tr>
+             <td><label>Employment</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="Emp" name="Emp"  required="required" >
+             {% if se == 1 %}
+             <option value="1" selected>Self Employed</option>
+          <option value="0">Not Self Employment</option>
+            {% else %}
+            <option value="1">Self Employed</option>
+          <option value="0" selected>Not Self Employment</option>
+            
+            {% endif %}
+          
+        </select></td>
+         </tr><tr>
+             <td> <label>Property_Area</label></td>
+             <td class="colon"><label>:</label></td>
+             <td><select id="PA" name="PA"  required="required" >
+             {% if pa == 0 %}
+             <option value="0" selected>Rural</option>
+          <option value="2">Urban</option>
+          <option value="1">Semi-Urban</option>
+             {% elif pa == 2 %}
+             <option value="0">Rural</option>
+          <option value="2" selected>Urban</option>
+          <option value="1">Semi-Urban</option>
+            {% else %}
+            <option value="0">Rural</option>
+          <option value="2">Urban</option>
+          <option value="1" selected>Semi-Urban</option>
+            
+            {% endif %}
+          
+        </select></td>
+         </tr>
+         <tr>
+             <td><button  type="submit" class="btn btn-primary btn-block btn-large" >Predict</button></td>
+             <td class="colon"><label></label></td>
+             <td><button  onclick="Reset()" class="btn btn-primary btn-block btn-large">Reset</button></td>
+         </tr>
+         <tr>
+             {% if prediction_text == 1 %}
+             <td style="text-align:center" colspan="3"><p class="tr">You are eligible for Loan</p></td>
+             {% endif %}
+             {% if prediction_text == 0 %}
+             <td style="text-align:center" colspan="3"><p class="fr">You are not eligible for Loan</p></td>
+             {% endif %}
+        </tr>
+        
+         
+    </table>
+    
+    </form>
+   </div>
+    <br>
+   <br>
+    
+</div>
+   <br>
+   <br>
+   
+</body>
+</html>

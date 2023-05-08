@@ -1,0 +1,11 @@
+50,000-male
+not married,rural ,no ch,dep 0
+without Ch limit 1,60,000-1,70,000
+
+not married, has ch,semi-urban
+with ch limit 4,62,000
+
+50000 - female
+with ch,not married,grad semi-urban
+4,30,000
+
